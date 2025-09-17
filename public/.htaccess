@@ -4,7 +4,8 @@
    RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
-
+# Skip API requests so they go to CI3 backend
+      RewriteCond %{REQUEST_URI} ^/ticket/api/
     # Everything else goes to index.html
     RewriteRule ^ index.html [L]
 </IfModule>
